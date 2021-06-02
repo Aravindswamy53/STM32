@@ -1,7 +1,9 @@
 #include "stm32f10x.h"
 #include "stdio.h"
 
-
+void TIM2_Config (void);
+void Delay_us (uint16_t us);
+void Delay_ms (uint16_t ms);
 
 void usart_init(void);
 void usart_configure(uint32_t baudrate);
