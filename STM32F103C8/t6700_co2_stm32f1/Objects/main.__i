@@ -1,0 +1,8 @@
+-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections
+-I C:\Users\aravi\OneDrive\Desktop\t6700_co2_stm32f1\RTE
+-I C:\Users\aravi\OneDrive\Desktop\t6700_co2_stm32f1\RTE\Device\STM32F103C8
+-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\RTE_Driver
+-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD
+-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d "main.c"
