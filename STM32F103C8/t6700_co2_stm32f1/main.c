@@ -8,6 +8,10 @@ int main()
 	char string_uart[9]={0x15,0x4,0x13,0x89,0x00,0x01};        // TRANSMIT DATA (USART)
 	unsigned char data_crc[2]={0x00,0x01};// msb lsb        
 	uint16_t crc=0;
+	
+	SystemInit ();
+	TIM2_Config();
+	
 	usart_init();                                              //USART INITIALIZATION
 	usart_configure(19200);                                    //UASRT CONFIGURE TO 19200 BAUD RATE
 	crc = CRC16(data_crc,2);                           //CRC VALUE
@@ -28,24 +32,24 @@ int main()
 		i2c_write(0x00);
 		i2c_write(0x01);
 		i2c_stop();
-		//delay_us(2000);
+		Delay_us(2000);
 		i2c_read(0x15,data_i2c_co2,4);
 		co2_i2c_value = ((data_i2c_co2[2] <<8) | data_i2c_co2[3]);
-		//delay_us(2000);
+		Delay_us(2000);
 		
 /* uart 
-	• 19200 Baud
-	• 1 START bit
-	• 8 DATA bits
-	• 1 EVEN PARITY bit
-	• 1 STOP bit  
+	â€¢ 19200 Baud
+	â€¢ 1 START bit
+	â€¢ 8 DATA bits
+	â€¢ 1 EVEN PARITY bit
+	â€¢ 1 STOP bit  
 */
 		usart1_sendstring(string_uart);
-		//delay_us(2000);
+		Delay_us(2000);
 		usart_rec_string(data_uart_co2, 7);
 		
 		co2_uart_value=((data_uart_co2[3]<<8) | data_uart_co2[4]);
-		//delay_us(2000);
+		Delay_us(2000);
 		
 	}
 }
